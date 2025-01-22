@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: Stock Market Data API
+  description: This is a simple API for getting stock market data
+  version: 1.0.0
+  contact:
+    name: XXX
+servers:
+  - description: Production
+    url: xxx
+paths:
+  /v1/stock/trade:
+    get:
+      summary: Get a trade
+      tags:
+        - Stock
+      parameters:
+        - $ref: '#/components/parameters/Symbol'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trade'
+        '400':
+          description: One of the request parameters is invalid. See the returned message for details.
+components:
+  parameters:
+    Symbol:
+      name: symbol
+      in: query
+      description: A unique series of letters assigned to a security for trading purposes.
+      required: true
+      schema:
+        type: string
+      example: AAPL
+  schemas:
+    Trade:
+      type: object
+      description: A stock trade
+      properties:
+        t:
+          type: string
+          description: Timestamp in RFC-3339 format with nanosecond precision.
+          format: date-time
+          x-go-name: Timestamp
+        p:
+          type: number
+          format: double
+          description: Trade price.
+          x-go-name: Price
+        s:
+          type: integer
+          format: uint32
+          description: Trade size.
+          x-go-name: Size
+        x:
+          type: string
+          description: Exchange code.
+          x-go-name: Exchange
+

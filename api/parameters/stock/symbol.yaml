@@ -1,0 +1,7 @@
+name: symbol
+in: query
+description: A unique series of letters assigned to a security for trading purposes.
+required: true
+schema:
+  type: string
+example: AAPL

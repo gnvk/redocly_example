@@ -1,0 +1,16 @@
+get:
+  summary: Get a trade
+  tags:
+    - Stock
+  parameters:
+    - $ref: "../../parameters/crypto/symbol.yaml"
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "../../schemas/crypto/trade.yaml"
+    "400":
+      $ref: "../../responses/400.yaml"
+

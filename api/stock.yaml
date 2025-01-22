@@ -1,0 +1,20 @@
+openapi: 3.0.0
+info:
+  title: Stock Market Data API
+  description: This is a simple API for getting stock market data
+  version: 1.0.0
+  contact:
+    name: XXX
+servers:
+  - description: Production
+    url: "xxx"
+paths:
+  /v1/stock/trade:
+    $ref: ./paths/stock/trade.yaml
+components:
+  parameters:
+    Symbol:
+      $ref: ./parameters/stock/symbol.yaml
+  schemas:
+    Trade:
+      $ref: ./schemas/stock/trade.yaml

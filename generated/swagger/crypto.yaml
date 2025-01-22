@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: Crypto Market Data API
+  description: This is a simple API for getting crypto market data
+  version: 1.0.0
+  contact:
+    name: XXX
+servers:
+  - description: Production
+    url: xxx
+paths:
+  /v1/crypto/trade:
+    get:
+      summary: Get a trade
+      tags:
+        - Stock
+      parameters:
+        - $ref: '#/components/parameters/Symbol'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trade'
+        '400':
+          description: One of the request parameters is invalid. See the returned message for details.
+components:
+  parameters:
+    Symbol:
+      name: symbol
+      description: A crypto symbol
+      in: query
+      required: true
+      schema:
+        type: string
+      example: BTC/USD
+  schemas:
+    Trade:
+      type: object
+      description: A crypto trade
+      properties:
+        t:
+          type: string
+          description: Timestamp in RFC-3339 format with nanosecond precision.
+          format: date-time
+          x-go-name: Timestamp
+        p:
+          type: number
+          format: double
+          description: Trade price.
+          x-go-name: Price
+        s:
+          type: number
+          format: double
+          description: Trade size.
+          x-go-name: Size
+        tks:
+          type: string
+          description: 'Taker side: B for buyer, S for seller'
+          x-go-name: TakerSide
+

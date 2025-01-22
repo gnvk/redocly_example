@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  title: Market Data API
+  description: This is a simple API for getting market data
+  version: 1.0.0
+  contact:
+    name: XXX
+servers:
+  - description: Production
+    url: xxx
+tags:
+  - name: Stock
+  - name: Crypto
+paths:
+  /v1/crypto/trade:
+    get:
+      summary: Get a trade
+      tags:
+        - Stock
+      parameters:
+        - $ref: '#/components/parameters/CryptoSymbol'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoTrade'
+        '400':
+          $ref: '#/paths/~1v1~1stock~1trade/get/responses/400'
+  /v1/stock/trade:
+    get:
+      summary: Get a trade
+      tags:
+        - Stock
+      parameters:
+        - $ref: '#/components/parameters/StockSymbol'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockTrade'
+        '400':
+          description: One of the request parameters is invalid. See the returned message for details.
+components:
+  parameters:
+    CryptoSymbol:
+      name: symbol
+      description: A crypto symbol
+      in: query
+      required: true
+      schema:
+        type: string
+      example: BTC/USD
+    StockSymbol:
+      name: symbol
+      in: query
+      description: A unique series of letters assigned to a security for trading purposes.
+      required: true
+      schema:
+        type: string
+      example: AAPL
+  schemas:
+    CryptoTrade:
+      type: object
+      description: A crypto trade
+      properties:
+        t:
+          $ref: '#/components/schemas/StockTrade/properties/t'
+        p:
+          type: number
+          format: double
+          description: Trade price.
+          x-go-name: Price
+        s:
+          type: number
+          format: double
+          description: Trade size.
+          x-go-name: Size
+        tks:
+          type: string
+          description: 'Taker side: B for buyer, S for seller'
+          x-go-name: TakerSide
+    StockTrade:
+      type: object
+      description: A stock trade
+      properties:
+        t:
+          type: string
+          description: Timestamp in RFC-3339 format with nanosecond precision.
+          format: date-time
+          x-go-name: Timestamp
+        p:
+          type: number
+          format: double
+          description: Trade price.
+          x-go-name: Price
+        s:
+          type: integer
+          format: uint32
+          description: Trade size.
+          x-go-name: Size
+        x:
+          type: string
+          description: Exchange code.
+          x-go-name: Exchange
+

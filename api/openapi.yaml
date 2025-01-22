@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: Market Data API
+  description: This is a simple API for getting market data
+  version: 1.0.0
+  contact:
+    name: XXX
+servers:
+  - description: Production
+    url: "xxx"
+tags:
+  - name: Stock
+  - name: Crypto
+paths:
+  /v1/crypto/trade:
+    $ref: ./paths/crypto/trade.yaml
+  /v1/stock/trade:
+    $ref: ./paths/stock/trade.yaml
+components:
+  parameters:
+    CryptoSymbol:
+      $ref: ./parameters/crypto/symbol.yaml
+    StockSymbol:
+      $ref: ./parameters/stock/symbol.yaml
+  schemas:
+    CryptoTrade:
+      $ref: ./schemas/crypto/trade.yaml
+    StockTrade:
+      $ref: ./schemas/stock/trade.yaml

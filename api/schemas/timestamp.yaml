@@ -1,0 +1,4 @@
+type: string
+description: Timestamp in RFC-3339 format with nanosecond precision.
+format: date-time
+x-go-name: Timestamp

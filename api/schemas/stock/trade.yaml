@@ -1,0 +1,19 @@
+type: object
+description: A stock trade
+properties:
+  t:
+    $ref: "../timestamp.yaml"
+  p:
+    type: number
+    format: double
+    description: Trade price.
+    x-go-name: Price
+  s:
+    type: integer
+    format: uint32
+    description: Trade size.
+    x-go-name: Size
+  x:
+    type: string
+    description: Exchange code.
+    x-go-name: Exchange

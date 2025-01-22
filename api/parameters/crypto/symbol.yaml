@@ -1,0 +1,7 @@
+name: symbol
+description: A crypto symbol
+in: query
+required: true
+schema:
+  type: string
+example: BTC/USD
