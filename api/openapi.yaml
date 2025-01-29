@@ -16,14 +16,3 @@ paths:
     $ref: ./paths/crypto/trade.yaml
   /v1/stock/trade:
     $ref: ./paths/stock/trade.yaml
-components:
-  parameters:
-    CryptoSymbol:
-      $ref: ./parameters/crypto/symbol.yaml
-    StockSymbol:
-      $ref: ./parameters/stock/symbol.yaml
-  schemas:
-    CryptoTrade:
-      $ref: ./schemas/crypto/trade.yaml
-    StockTrade:
-      $ref: ./schemas/stock/trade.yaml

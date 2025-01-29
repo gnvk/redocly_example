@@ -18,14 +18,14 @@ paths:
       tags:
         - Stock
       parameters:
-        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/crypto-symbol'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/trade'
+                $ref: '#/components/schemas/crypto-trade'
         '400':
           $ref: '#/components/responses/400'
   /v1/stock/trade:
@@ -34,23 +34,19 @@ paths:
       tags:
         - Stock
       parameters:
-        - $ref: '#/components/parameters/symbol-2'
+        - $ref: '#/components/parameters/stock-symbol'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/trade-2'
+                $ref: '#/components/schemas/stock-trade'
         '400':
           $ref: '#/components/responses/400'
 components:
   parameters:
-    CryptoSymbol:
-      $ref: '#/components/parameters/symbol'
-    StockSymbol:
-      $ref: '#/components/parameters/symbol-2'
-    symbol:
+    crypto-symbol:
       name: symbol
       description: A crypto symbol
       in: query
@@ -58,7 +54,7 @@ components:
       schema:
         type: string
       example: BTC/USD
-    symbol-2:
+    stock-symbol:
       name: symbol
       in: query
       description: A unique series of letters assigned to a security for trading purposes.
@@ -67,16 +63,12 @@ components:
         type: string
       example: AAPL
   schemas:
-    CryptoTrade:
-      $ref: '#/components/schemas/trade'
-    StockTrade:
-      $ref: '#/components/schemas/trade-2'
     timestamp:
       type: string
       description: Timestamp in RFC-3339 format with nanosecond precision.
       format: date-time
       x-go-name: Timestamp
-    trade:
+    crypto-trade:
       type: object
       description: A crypto trade
       properties:
@@ -96,7 +88,7 @@ components:
           type: string
           description: 'Taker side: B for buyer, S for seller'
           x-go-name: TakerSide
-    trade-2:
+    stock-trade:
       type: object
       description: A stock trade
       properties:

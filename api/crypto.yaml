@@ -11,10 +11,3 @@ servers:
 paths:
   /v1/crypto/trade:
     $ref: ./paths/crypto/trade.yaml
-components:
-  parameters:
-    Symbol:
-      $ref: ./parameters/crypto/symbol.yaml
-  schemas:
-    Trade:
-      $ref: ./schemas/crypto/trade.yaml

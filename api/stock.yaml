@@ -11,10 +11,4 @@ servers:
 paths:
   /v1/stock/trade:
     $ref: ./paths/stock/trade.yaml
-components:
-  parameters:
-    Symbol:
-      $ref: ./parameters/stock/symbol.yaml
-  schemas:
-    Trade:
-      $ref: ./schemas/stock/trade.yaml
+

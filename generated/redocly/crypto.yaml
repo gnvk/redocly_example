@@ -27,8 +27,6 @@ paths:
           $ref: '#/components/responses/400'
 components:
   parameters:
-    Symbol:
-      $ref: '#/components/parameters/symbol'
     symbol:
       name: symbol
       description: A crypto symbol
@@ -38,8 +36,6 @@ components:
         type: string
       example: BTC/USD
   schemas:
-    Trade:
-      $ref: '#/components/schemas/trade'
     timestamp:
       type: string
       description: Timestamp in RFC-3339 format with nanosecond precision.

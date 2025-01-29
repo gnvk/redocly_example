@@ -1,0 +1,22 @@
+# redocly.yaml
+
+plugins:
+  - plugin.mjs
+
+apis:
+  openapi:
+    root: api/openapi.yaml
+    output: generated/redocly/openapi.yaml
+  crypto:
+    root: api/crypto.yaml
+    output: generated/redocly/crypto.yaml
+    decorators:
+      "my-plugin/remove-prefix":
+        prefix: "crypto-"
+  stock:
+    root: api/stock.yaml
+    output: generated/redocly/stock.yaml
+    # set up the custom decorator specific to the 'stock' api
+    decorators:
+      "my-plugin/remove-prefix":
+        prefix: "stock-"
